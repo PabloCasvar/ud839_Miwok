@@ -20,4 +20,5 @@ public class Word {
         this.defaultTranslation = defaultTranslation;
         this.miwokTranslation = miwokTranslation;
     }
+
 }
