@@ -7,9 +7,12 @@ import android.graphics.Bitmap;
  */
 
 public class Word {
+
+    private static final int NO_IMAGE = -1;
     private String miwokTranslation;
     private String defaultTranslation;
-    private int imageResourcesID;
+    private int imageResourcesID = NO_IMAGE;
+
 
     public String getMiwokTranslation() {
         return miwokTranslation;
@@ -30,5 +33,9 @@ public class Word {
     public Word(String miwokTranslation, String defaultTranslation) {
         this.miwokTranslation = miwokTranslation;
         this.defaultTranslation = defaultTranslation;
+    }
+
+    public boolean hasImage() {
+        return  imageResourcesID != NO_IMAGE;
     }
 }

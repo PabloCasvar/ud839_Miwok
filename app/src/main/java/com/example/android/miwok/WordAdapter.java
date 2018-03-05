@@ -45,7 +45,11 @@ public class WordAdapter extends ArrayAdapter<Word> {
 
         ImageView miwokImageView = (ImageView) listItemView.findViewById(R.id.image_image_view);
 
-        miwokImageView.setImageResource(word.getImageResourcesID());
+        if( word.hasImage() ){
+            miwokImageView.setImageResource(word.getImageResourcesID());
+        } else {
+            miwokImageView.setVisibility(View.GONE);
+        }
 
         return listItemView;
     }
