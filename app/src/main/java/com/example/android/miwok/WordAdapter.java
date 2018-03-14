@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,13 +23,13 @@ import java.util.ArrayList;
 
 public class WordAdapter extends ArrayAdapter<Word> {
 
-    private int backgroundColor;
-    private Resources res;
+    private int backgroundColorID;
     private Context context;
 
-    public WordAdapter(@NonNull Context context, ArrayList<Word> resource, int backgroundColor) {
+    public WordAdapter(@NonNull Context context, ArrayList<Word> resource, int backgroundColorID) {
         super(context, 0, resource);
-        this.backgroundColor = backgroundColor;
+        this.backgroundColorID = backgroundColorID;
+        this.context = context;
     }
 
     @Override
@@ -37,11 +38,13 @@ public class WordAdapter extends ArrayAdapter<Word> {
         View listItemView = convertView;
         if(listItemView == null){
             listItemView = LayoutInflater.from(getContext()).inflate(
-                    R.layout.list_item, parent, false);
+                R.layout.list_item, parent, false);
         }
 
         LinearLayout containerListLinearLayout = (LinearLayout) listItemView.findViewById(R.id.container_list_linear_layout);
-        containerListLinearLayout.setBackgroundColor(ContextCompat.getColor(context, this.backgroundColor));
+        containerListLinearLayout.setBackgroundColor(context.getResources().getColor(backgroundColorID));
+
+        Log.v("Hola", "Hola");
 
         Word word = getItem(position);
 
